@@ -35,13 +35,13 @@ you should set up Workload Identify Federation.
 From your local terminal, run the following commands:
 
 1. Sign into GitHub. 
-   ```bash
-   gh auth login
-   ```
+```bash
+gh auth login
+```
 1. Authenticate with Google Cloud.
-   ```bash
-   gcloud init
-   ```
+```bash
+gcloud init
+```
    You need to use an account that have at least the following IAM roles in a
    Google Cloud project:
    1. `roles/serviceusage.serviceUsageAdmin` - ability to enable and disable
@@ -52,13 +52,11 @@ From your local terminal, run the following commands:
    manage IAM policies on service accounts
 1. Download and run the official Gemini CLI script to create a Workload Identify
    Pool and add GitHub as a Workload Identify Provider.
-   ```bash
+```bash
 curl -L https://raw.githubusercontent.com/google-github-actions/run-gemini-cli/main/scripts/setup_workload_identity.sh -o setup_workload_identity.sh
-
 chmod +x setup_workload_identity.sh
-
 ./setup_workload_identity.sh.
-   ```
+```
 
 Alternatively, you can obtain a Gemini API key and store it as a secret in the
 GitHub Actions settings of your repo. This is less recommended from a security
