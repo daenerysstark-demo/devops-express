@@ -6,12 +6,16 @@ This application is a **VULNERABLE-BY-DESIGN** educational tool. It demonstrates
 
 ## ⚠️ WARNING
 **DO NOT DEPLOY THIS APPLICATION TO A PRODUCTION ENVIRONMENT.**
-It contains severe security flaws that allow remote code execution, file disclosure, and credential theft.
 
 ## Features & Vulnerabilities
 
+PRs containing the following features and vulnerabilities are sent for
+review at first. Gemini Code Assist catches and fixes the vulnerabilities
+one by one.
+
 1.  **Asset Downloader**: Vulnerable to **Path Traversal**.
     - *Try*: `/download?file=../../app.py`
+    - Caught and fixed by Gemini Code Assit in #4.
 2.  **System Diagnostics**: Vulnerable to **Information Disclosure** (Env vars).
     - *Try*: `/health`
 3.  **Quick-Link Generator**: Vulnerable to **Weak Cryptography**.
