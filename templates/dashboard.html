@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- 1. Asset Downloader -->
+<div class="glass-container feature-card">
+    <div class="feature-title">
+        <i data-lucide="download"></i> Asset Library
+        <span class="status-badge">Online</span>
+    </div>
+    <div class="feature-description">
+        Securely download approved assets and documentation from the centralized repository.
+    </div>
+    <div style="margin-top: auto;">
+        <form action="/download" method="get" target="_blank">
+            <input type="text" name="file" placeholder="Enter filename..." value="profile_icon.png"
+                style="width: 100%; margin-bottom: 0.5rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 4px; padding: 0.5rem;">
+            <button type="submit" class="action-btn">Download Asset</button>
+        </form>
+        <div style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7; text-align: center;">
+            Try: <span style="font-family: monospace; text-decoration: underline; cursor: pointer;"
+                onclick="this.closest('.feature-card').querySelector('input').value='../../app.py'">../../app.py</span>
+        </div>
+    </div>
+</div>
+
+<!-- 2. System Diagnostics -->
+<div class="glass-container feature-card">
+    <div class="feature-title">
+        <i data-lucide="activity"></i> System Health
+        <span class="status-badge">Active</span>
+    </div>
+    <div class="feature-description">
+        Real-time environment monitoring with automatic secret redaction protocol.
+    </div>
+    <a href="/health" target="_blank" class="action-btn">Run Diagnostics</a>
+</div>
+
+<!-- 3. Quick-Link Generator -->
+<div class="glass-container feature-card">
+    <div class="feature-title">
+        <i data-lucide="link"></i> Quick Share
+    </div>
+    <div class="feature-description">
+        Generate temporary access tokens regarding specific internal resources.
+    </div>
+    <form id="linkForm" onsubmit="generateLink(event)">
+        <button type="submit" class="action-btn">Generate Token</button>
+    </form>
+    <div id="linkResult" class="grid-console" style="display: none;"></div>
+</div>
+
+<!-- 4. Plugin Task Runner -->
+<div class="glass-container feature-card">
+    <div class="feature-title">
+        <i data-lucide="cpu"></i> Task Runner
+        <span class="status-badge">Beta</span>
+    </div>
+    <div class="feature-description">
+        Upload serialised task objects for immediate execution on the server worker pool.
+    </div>
+    <form action="/upload-task" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" style="margin-bottom: 1rem; width: 100%;">
+        <button type="submit" class="action-btn">Execute Task</button>
+    </form>
+</div>
+
+<!-- 5. PDF Report Generator -->
+<div class="glass-container feature-card">
+    <div class="feature-title">
+        <i data-lucide="file-text"></i> Report Gen
+    </div>
+    <div class="feature-description">
+        Generate YAML/PDF reports using the legacy report engine.
+    </div>
+    <form action="/generate-report" method="post">
+        <textarea name="config" rows="3"
+            style="width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 4px; padding: 0.5rem;"
+            placeholder="YAML Config..."></textarea>
+        <button type="submit" class="action-btn" style="margin-top: 0.5rem;">Generate</button>
+    </form>
+</div>
+
+<script>
+    async function generateLink(event) {
+        event.preventDefault();
+        const res = await fetch('/generate-link', { method: 'POST' });
+        const data = await res.json();
+        const consoleDiv = document.getElementById('linkResult');
+        consoleDiv.style.display = 'block';
+        consoleDiv.innerHTML = `> Token: ${data.url}<br>> Expires: ${data.expires_in}<br>> TS: ${data.timestamp_used}`;
+    }
+</script>
+
+{% endblock %}
