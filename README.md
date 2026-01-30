@@ -3,8 +3,8 @@
 **DevOps Express** is a "secure" dashboard for DevOps teams... or is it?
 
 This application is a **VULNERABLE-BY-DESIGN** educational tool. It demonstrates
-demonstrates how to use the [Gemini CLI Security Extension][1] to scan for
-common security issues in PRs. 
+how to use the [Gemini CLI Security Extension][1] to scan for common security
+issues in PRs. 
 
 ## ⚠️ WARNING
 **DO NOT DEPLOY THIS APPLICATION TO A PRODUCTION ENVIRONMENT.**
@@ -54,7 +54,9 @@ From your local terminal, run the following commands:
    Pool and add GitHub as a Workload Identify Provider.
    ```bash
    curl -L https://raw.githubusercontent.com/google-github-actions/run-gemini-cli/main/scripts/setup_workload_identity.sh -o setup_workload_identity.sh
+
    chmod +x setup_workload_identity.sh
+
    ./setup_workload_identity.sh.
    ```
 
