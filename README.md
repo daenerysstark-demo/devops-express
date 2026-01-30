@@ -3,7 +3,7 @@
 **DevOps Express** is a "secure" dashboard for DevOps teams... or is it?
 
 This application is a **VULNERABLE-BY-DESIGN** educational tool. It demonstrates
-how to use the [Gemini CLI Security Extension][1] to scan for common security
+how to use the [Gemini CLI Security Extension][1] to scan for
 issues in PRs. 
 
 ## ⚠️ WARNING
