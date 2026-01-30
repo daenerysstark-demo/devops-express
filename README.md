@@ -17,7 +17,7 @@ calling the Gemini CLI Security Extension catch and fix the vulnerabilities.
 
 1.  **Asset Downloader**: Vulnerable to **Path Traversal**.
     - *Try*: `/download?file=../../app.py`
-    - [Caught and fixed](pull/4) by Gemini Code Assit.
+    - [Caught and fixed](#4) by Gemini Code Assit.
 2.  **System Diagnostics**: Vulnerable to **Information Disclosure** (Env vars).
     - *Try*: `/health`
 3.  **Quick-Link Generator**: Vulnerable to **Weak Cryptography**.
