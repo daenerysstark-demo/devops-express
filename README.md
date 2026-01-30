@@ -53,11 +53,11 @@ From your local terminal, run the following commands:
 1. Download and run the official Gemini CLI script to create a Workload Identify
    Pool and add GitHub as a Workload Identify Provider.
    ```bash
-   curl -L https://raw.githubusercontent.com/google-github-actions/run-gemini-cli/main/scripts/setup_workload_identity.sh -o setup_workload_identity.sh
+curl -L https://raw.githubusercontent.com/google-github-actions/run-gemini-cli/main/scripts/setup_workload_identity.sh -o setup_workload_identity.sh
 
-./setup_workload_identity.sh
+chmod +x setup_workload_identity.sh
 
-   ./setup_workload_identity.sh.
+./setup_workload_identity.sh.
    ```
 
 Alternatively, you can obtain a Gemini API key and store it as a secret in the
