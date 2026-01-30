@@ -55,7 +55,7 @@ From your local terminal, run the following commands:
    ```bash
    curl -L https://raw.githubusercontent.com/google-github-actions/run-gemini-cli/main/scripts/setup_workload_identity.sh -o setup_workload_identity.sh
 
-   chmod +x setup_workload_identity.sh
+./setup_workload_identity.sh
 
    ./setup_workload_identity.sh.
    ```
