@@ -1,0 +1,23 @@
+import os
+from flask import Blueprint, request, send_file
+
+downloader_bp = Blueprint('downloader', __name__)
+
+# --- Feature 1: Asset Downloader (Path Traversal) ---
+@downloader_bp.route('/download')
+def download_asset():
+    filename = request.args.get('file')
+    if not filename:
+        return "No file specified", 400
+    
+    # Vulnerability: Direct join without sanitization allow path traversal
+    # e.g., /download?file=../../app.py
+    base_path = os.path.join(os.getcwd(), 'static/assets')
+    file_path = os.path.join(base_path, filename)
+    
+    print(f"Attempting to download: {file_path}") # Debug log
+    
+    try:
+        return send_file(file_path, as_attachment=True)
+    except Exception as e:
+        return f"Error: {str(e)}", 404
