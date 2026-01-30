@@ -13,7 +13,9 @@ def download_asset():
     # Vulnerability: Direct join without sanitization allow path traversal
     # e.g., /download?file=../../app.py
     base_path = os.path.join(os.getcwd(), 'static/assets')
-    file_path = os.path.join(base_path, filename)
+    file_path = os.path.abspath(os.path.join(base_path, filename))
+    if not file_path.startswith(os.path.abspath(base_path)):
+        return "Access Denied", 403
     
     print(f"Attempting to download: {file_path}") # Debug log
     
