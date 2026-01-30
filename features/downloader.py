@@ -10,8 +10,6 @@ def download_asset():
     if not filename:
         return "No file specified", 400
     
-    # Vulnerability: Direct join without sanitization allow path traversal
-    # e.g., /download?file=../../app.py
     base_path = os.path.join(os.getcwd(), 'static/assets')
     file_path = os.path.abspath(os.path.join(base_path, filename))
     if not file_path.startswith(os.path.abspath(base_path)):
