@@ -57,6 +57,8 @@ curl -L https://raw.githubusercontent.com/google-github-actions/run-gemini-cli/m
 chmod +x setup_workload_identity.sh
 ./setup_workload_identity.sh.
 ```
+1. Go to repo Setttings > Security > Secrets and variables > Variables. Set
+   "GOOGLE_GENAI_USE_VERTEXAI" to "true".
 
 Alternatively, you can obtain a Gemini API key and store it as a secret in the
 GitHub Actions settings of your repo. This is less recommended from a security
@@ -64,7 +66,7 @@ point of view because keys have broad permissions, hard to manage at scale, and
 prone to getting leaked in code and logs.
 
 1. Obtain a Gemini API key from Google AI Studio.
-1. Go to your repository's Settings > Secrets and variables > Actions. 
+1. Go to your repository's Settings > Secrets and variables > Secrets. 
    Click New repository secret.
    Name: GEMINI_API_KEY
    Value: your API key
